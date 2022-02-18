@@ -14,6 +14,20 @@ namespace BooksApi.Controllers
             _bookService = booksService;
         }
 
+        [HttpGet("get-all-books")]
+        public IActionResult GetAllBooks()
+        {
+            var allBooks = _bookService.GetAllBooks();
+            return Ok(allBooks);
+        }
+
+        [HttpGet("get-book/{id}")]
+        public IActionResult GetBookById(int id)
+        {
+            var book = _bookService.GetBookById(id);
+            return Ok(book);
+        }
+
         [HttpPost("add-book")]
         public IActionResult AddBook([FromBody]BookVM book)
         {
