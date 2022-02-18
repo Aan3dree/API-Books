@@ -14,6 +14,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using BooksApi.Data;
+using BooksApi.Services;
 
 namespace BooksApi
 {
@@ -36,6 +37,9 @@ namespace BooksApi
 
             //Configure DBContext with SQL
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(ConnectionString));
+
+            //Configure the Services
+            services.AddTransient<BooksService>();
 
             services.AddSwaggerGen(c =>
             {
